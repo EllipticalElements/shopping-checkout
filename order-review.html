@@ -115,8 +115,8 @@
             this._fireEvent('shopping.checkout.failure', err);
         },
 
-        _showSuccess: function () {
-            this._fireEvent('shopping.checkout.success', {});
+        _showSuccess: function (html,order) {
+            this._fireEvent('shopping.checkout.success', {value:order,body:html});
         },
 
         _hideOrderModal: function () {
@@ -161,7 +161,7 @@
                         self._scrollTop(0);
                         var shoppingBag = orderSuccess.querySelector('shopping-bag');
                         shoppingBag.notifyBagTotals(order);
-                        self._showSuccess();
+                        self._showSuccess(out,order);
                         self._hideOrderModal();
                     });
                 }
