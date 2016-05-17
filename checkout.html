@@ -208,7 +208,15 @@
         },
 
         _setScopeProp:function(value,prop){
-            this.$scope[prop]=value;
+            if(prop){
+                this.$scope[prop]=value;
+            }else{
+                for (var p in value) {
+                   if (value.hasOwnProperty(p)) {
+                      this.$scope[p]=value[p];
+                   }
+                }
+            }
         },
 
         _getItem:function(index){
